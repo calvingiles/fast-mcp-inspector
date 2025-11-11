@@ -10,7 +10,7 @@
 
 ## Overview
 
-`fastapi-mcp-inspector` is a zero-configuration Python package that automatically discovers MCP servers mounted in your FastAPI application and provides one-click access to a visual debugging interface for each one. Think of it as "Swagger UI for MCP" - it seamlessly integrates the official [MCP Inspector](https://github.com/modelcontextprotocol/inspector) into your FastAPI documentation.
+`fastapi-mcp-inspector` is a zero-configuration Python package that automatically discovers MCP servers mounted in your FastAPI application and provides one-click access to a visual debugging interface for each one. Think of it as "Swagger UI for MCP" - it seamlessly integrates the official [MCP Inspector](https://github.com/modelcontextprotocol/inspector) (v0.17.2) into your FastAPI documentation.
 
 ### Key Features
 
@@ -200,6 +200,20 @@ See the [examples](./examples) directory for complete working demos:
 
 ## Development & Testing
 
+### Building the Package
+
+The static assets are fetched from the official MCP Inspector during the build process (not checked into version control). To build locally:
+
+```bash
+# 1. Build static assets (requires Node.js 16+ and npm 7+)
+npm run build:assets
+
+# 2. Build the Python package
+python -m build
+```
+
+See [BUILD.md](BUILD.md) for detailed build instructions and troubleshooting.
+
 ### Running Tests
 
 The project includes a comprehensive test suite with 18+ tests covering all functionality:
@@ -207,6 +221,9 @@ The project includes a comprehensive test suite with 18+ tests covering all func
 ```bash
 # Install development dependencies
 pip install -r requirements-dev.txt
+
+# Build static assets first (required for tests)
+npm run build:assets
 
 # Run tests
 pytest tests/ -v
