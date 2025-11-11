@@ -4,7 +4,7 @@
   "private": true,
   "description": "Build configuration for fastapi-mcp-inspector",
   "scripts": {
-    "build:assets": "python scripts/build_assets.py"
+    "build:assets": "python -u scripts/build_assets.py"
   },
   "devDependencies": {
     "@modelcontextprotocol/inspector": "0.17.2"

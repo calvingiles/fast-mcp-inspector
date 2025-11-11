@@ -25,7 +25,15 @@ INSPECTOR_PACKAGE = f"@modelcontextprotocol/inspector@{INSPECTOR_VERSION}"
 
 def run_command(cmd, cwd=None):
     """Run a shell command and return its output."""
+    # On Windows, npm is npm.cmd, so we need to adjust the command
+    if sys.platform == "win32":
+        if cmd[0] == "npm":
+            cmd = ["npm.cmd"] + cmd[1:]
+        elif cmd[0] == "node":
+            cmd = ["node.exe"] + cmd[1:]
+
     print(f"Running: {' '.join(cmd)}")
+
     result = subprocess.run(
         cmd,
         cwd=cwd,
@@ -99,7 +107,14 @@ def main():
         # Remove existing static_ui directory if it exists
         if static_ui_dir.exists():
             print(f"\nRemoving existing static UI directory...")
-            shutil.rmtree(static_ui_dir)
+            try:
+                shutil.rmtree(static_ui_dir)
+            except PermissionError as e:
+                # On Windows, files might be locked - wait and retry
+                print(f"Warning: Permission error removing directory, retrying...")
+                import time
+                time.sleep(1)
+                shutil.rmtree(static_ui_dir)
 
         # Copy the dist directory to static_ui
         print(f"\nCopying static files to {static_ui_dir}...")
