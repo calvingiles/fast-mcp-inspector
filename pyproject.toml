@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools-scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastapi-mcp-inspector"
+version = "0.1.0"
+description = "Pluggable Python package that integrates the official Model Context Protocol (MCP) Inspector directly into FastAPI applications"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [
+    { name = "FastAPI MCP Inspector Contributors" }
+]
+keywords = ["fastapi", "mcp", "model-context-protocol", "inspector", "debugging", "swagger"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: FastAPI",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "fastapi>=0.68.0",
+    "starlette>=0.14.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.24.0",
+    "uvicorn>=0.20.0",
+    "fastmcp>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/calvingiles/fast-mcp-inspector"
+Repository = "https://github.com/calvingiles/fast-mcp-inspector"
+Issues = "https://github.com/calvingiles/fast-mcp-inspector/issues"
+
+[tool.setuptools]
+package-dir = {"" = "."}
+packages = ["fastapi_mcp_inspector"]
+
+[tool.setuptools.package-data]
+fastapi_mcp_inspector = ["static_ui/**/*", "py.typed"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

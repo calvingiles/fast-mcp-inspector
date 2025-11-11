@@ -1,0 +1,4 @@
+include LICENSE
+include README.md
+recursive-include fastapi_mcp_inspector/static_ui *
+include fastapi_mcp_inspector/py.typed
