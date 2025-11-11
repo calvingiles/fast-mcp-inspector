@@ -2,9 +2,11 @@
 
 > **Swagger UI for MCP** - Integrate the official Model Context Protocol Inspector directly into your FastAPI applications
 
+[![CI](https://github.com/calvingiles/fast-mcp-inspector/actions/workflows/ci.yml/badge.svg)](https://github.com/calvingiles/fast-mcp-inspector/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.68+-green.svg)](https://fastapi.tiangolo.com/)
+[![codecov](https://codecov.io/gh/calvingiles/fast-mcp-inspector/branch/main/graph/badge.svg)](https://codecov.io/gh/calvingiles/fast-mcp-inspector)
 
 ## Overview
 
@@ -195,6 +197,54 @@ See the [examples](./examples) directory for complete working demos:
 
 - `demo_app.py` - Full example with multiple mock MCP servers
 - `examples/README.md` - Instructions for running the examples
+
+## Development & Testing
+
+### Running Tests
+
+The project includes a comprehensive test suite with 18+ tests covering all functionality:
+
+```bash
+# Install development dependencies
+pip install -r requirements-dev.txt
+
+# Run tests
+pytest tests/ -v
+
+# Run with coverage
+pytest tests/ --cov=fastapi_mcp_inspector --cov-report=html
+
+# View coverage report
+open htmlcov/index.html
+```
+
+### Code Quality
+
+```bash
+# Run linter
+ruff check fastapi_mcp_inspector/
+
+# Format code
+black fastapi_mcp_inspector/
+
+# Type checking
+mypy fastapi_mcp_inspector/
+
+# Install pre-commit hooks
+pre-commit install
+```
+
+### CI/CD
+
+The project uses GitHub Actions for continuous integration:
+
+- **Tests**: Run on Python 3.8-3.12 across Linux, macOS, and Windows
+- **Linting**: Code quality checks with ruff and mypy
+- **Coverage**: Track test coverage with codecov
+- **Build**: Verify package builds correctly
+- **Examples**: Test that demo applications start successfully
+
+All checks must pass before merging PRs.
 
 ## Troubleshooting
 
