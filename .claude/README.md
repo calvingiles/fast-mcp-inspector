@@ -2,9 +2,15 @@
 
 This directory contains Claude Code configuration for the fastapi-mcp-inspector project.
 
+## Configuration Files
+
+- **`settings.json`** - Claude Code settings that register hooks
+- **`session_start.sh`** - Script that runs when a session starts
+- **`README.md`** - This documentation file
+
 ## Session Start Hook
 
-The `session_start.sh` script runs automatically when you open this project in Claude Code. It:
+The `session_start.sh` script is registered in `settings.json` and runs automatically when you open this project in Claude Code. It:
 
 - ✅ Automatically installs pre-commit hooks if pre-commit is available
 - 🐍 Shows your Python version

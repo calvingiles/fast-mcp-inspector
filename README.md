@@ -246,6 +246,17 @@ The project uses GitHub Actions for continuous integration:
 
 All checks must pass before merging PRs.
 
+### Claude Code Integration
+
+This project includes a Claude Code session start hook that automatically sets up your development environment:
+
+- **Auto-install pre-commit**: Installs pre-commit if not already present
+- **Setup git hooks**: Configures pre-commit hooks automatically
+- **Environment check**: Shows Python version and package status
+- **Helpful commands**: Displays common development commands
+
+When you open this project in Claude Code, the hook runs automatically. See [`.claude/README.md`](.claude/README.md) for more details.
+
 ## Troubleshooting
 
 ### Inspector shows "Connection Failed"
